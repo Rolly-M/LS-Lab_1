@@ -1,6 +1,11 @@
 version: '3'
 services:
     Container_A:
+        build:
+            context: ./container_a
+            dockerfile: Dockerfile
+            args:
+              image_name: nginx:st5
         image: nginx:st5
         ports:
             - "8080:80"
@@ -8,6 +13,11 @@ services:
             - ./container_a/index.html:/usr/share/nginx/html/index.html
         restart: always
     Container_B:
+        build:
+            context: ./Container_B
+            dockerfile: Dockerfile
+            args:
+              image_name: nginx:st5.1
         image: nginx:st5.1
         ports:
             - "9090:80"
